@@ -1,0 +1,39 @@
+/* Mobile-first responsive adjustments */
+@media (max-width: 600px) {
+    .text-h2 {
+        font-size: 2.5rem !important;
+    }
+
+    .text-h3 {
+        font-size: 2rem !important;
+    }
+
+    .text-h4 {
+        font-size: 1.75rem !important;
+    }
+
+    .v-container {
+        padding: 1rem;
+    }
+
+    .py-16 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Better touch targets on mobile */
+@media (max-width: 600px) {
+    .v-btn {
+        min-height: 48px;
+    }
+
+    .v-list-item {
+        min-height: 44px;
+    }
+}

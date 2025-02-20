@@ -1,0 +1,106 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# Add permissions
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
+
+      # Add image download step
+      - name: Download images
+        run: node scripts/download-images.js
+
+      - name: Build
+        run: yarn build
+
+      # Add verification step
+      - name: Verify build output
+        run: |
+          echo "Checking build output..."
+          if [ -d "dist" ]; then
+            echo "✓ dist directory exists"
+            echo "Contents of dist:"
+            ls -la dist
+            echo "Contents of public/images before build:"
+            ls -la public/images || echo "❌ No source images found"
+            echo "Contents of dist/images after build:"
+            ls -la dist/images || echo "❌ No built images found"
+            echo "Checking specific image paths:"
+            find dist -name "*.jpg" -o -name "*.png"
+          else
+            echo "❌ dist directory not found"
+            exit 1
+          fi
+
+      # Configure Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      # Upload artifact
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      # Add status check
+      - name: Check deployment
+        run: |
+          echo "Deployment completed"
+          echo "Website should be available at https://papacarp.github.io/samplerswww/"
+
+      # Add notification (optional)
+      - name: Notify deployment status
+        if: github.event_name == 'pull_request'  # Only run on pull requests
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const status = '${{ job.status }}'
+            const message = status === 'success' 
+              ? '🚀 Website deployed successfully to https://papacarp.github.io/samplerswww/'
+              : '❌ Deployment failed'
+            
+            if (context.issue.number) {
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: message
+              })
+            }
+
+      - name: Verify deployment
+        run: |
+          echo "Checking deployment status..."
+          if [ "${{ steps.deployment.outcome }}" = "success" ]; then
+            echo "✅ Deployment successful"
+          else
+            echo "❌ Deployment failed"
+            exit 1
+          fi 
