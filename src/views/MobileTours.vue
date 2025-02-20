@@ -105,21 +105,7 @@
           <h2 class="text-h4 font-weight-bold mb-6">Featured Mobile Tours</h2>
         </v-col>
         <v-col v-for="(image, index) in mobileImages" :key="index" cols="12" md="4">
-          <v-card class="mx-auto">
-            <v-img
-              :src="image.src"
-              :alt="image.alt"
-              height="300"
-              cover
-              class="bg-grey-lighten-2"
-            >
-              <template v-slot:placeholder>
-                <v-row class="fill-height ma-0" align="center" justify="center">
-                  <v-progress-circular indeterminate color="primary"></v-progress-circular>
-                </v-row>
-              </template>
-            </v-img>
-          </v-card>
+          <FeatureCard :image="image" />
         </v-col>
       </v-row>
     </v-container>
@@ -128,9 +114,13 @@
 
 <script>
 import { withBase } from '@/utils/paths';
-
+import FeatureCard from '@/components/FeatureCard.vue';
+import { components } from 'vuetify/dist/vuetify-labs.js';
 export default {
   name: 'MobileTours',
+  components  : {
+    FeatureCard
+  },
   data: () => ({
     mobileImages: [
       { src: withBase('/images/mobile/mobile1.jpg'), alt: 'Mobile Tour Example 1' },
