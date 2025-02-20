@@ -186,7 +186,11 @@
   resolved "https://registry.npmjs.org/@rtsao/scc/-/scc-1.1.0.tgz"
   integrity sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==
 
+<<<<<<< HEAD
 "@types/estree@^1.0.0", "@types/estree@^1.0.6", "@types/estree@1.0.6":
+=======
+"@types/estree@1.0.6", "@types/estree@^1.0.0", "@types/estree@^1.0.6":
+>>>>>>> 1e6bf4e7e670e95752ecd23204a2127842ed558c
   version "1.0.6"
   resolved "https://registry.npmjs.org/@types/estree/-/estree-1.0.6.tgz"
   integrity sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==

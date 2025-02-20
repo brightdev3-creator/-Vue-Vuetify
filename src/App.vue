@@ -2,11 +2,10 @@
   <v-app>
     <!-- Navigation -->
     <v-app-bar app color="primary" elevation="1" dark>
-      <v-container class="py-0 fill-height">
+      <v-container class="py-0 fill-height v-container-nav">
         <Logo class="mr-5" />
-        
-        <v-spacer></v-spacer>
 
+       
         <!-- Desktop Navigation -->
         <div class="d-none d-md-flex">
           <v-btn
@@ -14,7 +13,7 @@
             :key="item.title"
             :to="item.to"
             text
-            class="text-none"
+            class="text-body-1 font-weight-bold"
           >
             <span class="d-none d-lg-block">{{ item.title }}</span>
             <span class="d-md-block d-lg-none">{{ item.shortTitle }}</span>
@@ -22,25 +21,21 @@
         </div>
 
         <!-- Mobile Navigation Button -->
-        <v-btn 
-          icon 
-          @click="drawer = !drawer"
-          class="d-md-none"
-        >
+        <v-btn icon @click="drawer = !drawer" class="d-md-none">
           <v-icon>mdi-menu</v-icon>
         </v-btn>
 
-        <v-btn 
-          color="white" 
-          class="ml-4 d-none d-md-inline-flex" 
+        <v-btn
+          color="white"
+          class="ml-4 d-none d-md-inline-flex font-weight-bold rounded-lg"
           to="/contact"
           variant="outlined"
         >
           Contact Us
         </v-btn>
-        <v-btn 
-          color="white" 
-          class="ml-4 d-inline-flex d-md-none" 
+        <v-btn
+          color="white"
+          class="ml-4 d-inline-flex d-md-none"
           to="/contact"
           variant="outlined"
           icon
@@ -51,8 +46,8 @@
     </v-app-bar>
 
     <!-- Mobile Navigation Drawer -->
-    <v-navigation-drawer 
-      v-model="drawer" 
+    <v-navigation-drawer
+      v-model="drawer"
       app
       temporary
       location="top"
@@ -60,9 +55,9 @@
     >
       <v-list>
         <v-list-item-group>
-          <v-list-item 
-            v-for="item in menuItems" 
-            :key="item.title" 
+          <v-list-item
+            v-for="item in menuItems"
+            :key="item.title"
             :to="item.to"
             @click="drawer = false"
           >
@@ -91,7 +86,7 @@ import SocialLinks from '@/components/SocialLinks.vue'
 import AppFooter from './components/AppFooter.vue'
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     PageTransition,
     Logo,
@@ -103,7 +98,14 @@ export default {
     footerSolutions: FOOTER_SOLUTIONS,
     footerCompany: FOOTER_COMPANY,
     contactInfo: CONTACT_INFO,
-    drawer: false // Add this line to control the drawer
-  })
-}
+    drawer: false, // Add this line to control the drawer
+  }),
+};
 </script>
+<style scoped>
+@media (min-width: 1280px) {
+    .v-container-nav {
+        max-width: 1220px;
+    }
+}
+</style>
