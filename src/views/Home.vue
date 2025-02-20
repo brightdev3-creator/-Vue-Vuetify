@@ -34,15 +34,127 @@
     
 
     <!-- Services Section -->
-    <v-container id="services" class="py-12">
-      <v-row class="text-center mb-12">
-        <v-col cols="12">
-          <h2 class="text-h5 font-weight-bold mb-4">Comprehensive Marketing Services</h2>
-          <p class="text-body-1">End-to-end promotional marketing solutions for modern brands</p>
-        </v-col>
-      </v-row>
+    <v-container fluid id="services" class=" pa-0">
+     
 
-      <v-row>
+    
+      <div class="cool-section">
+    <v-row justify="center" align="center" class="fill-height pt-12">
+      <v-col cols="12" class="text-center mb-10">
+        <h1 class="text-h3 font-weight-bold gradient-text">
+          Comprehensive Marketing Services
+        </h1>
+        <p class="text-subtitle-1 grey--text text--lighten-1">
+          End-to-end promotional marketing solutions for modern brands
+        </p>
+      </v-col>
+      <v-col cols="12" md="10">
+        <v-row justify="center" align="stretch" class="mx-4">
+          <!-- Strategic Planning Card -->
+          <v-col cols="12" sm="4" class="pa-4">
+            <v-card
+              class="service-card elevation-5 pa-6"
+              rounded="xl"
+              @mouseover="hover = 'strategic'"
+              @mouseleave="hover = ''"
+            >
+              <v-icon
+                size="50"
+                :color="hover === 'strategic' ? 'blue-accent-4' : 'blue darken-2'"
+                class="mb-4"
+                v-if="hover === 'strategic'"
+              >
+                mdi-lightbulb-on
+              </v-icon>
+              <v-icon
+                size="50"
+                color="blue darken-2"
+                class="mb-4"
+                v-else
+              >
+                mdi-lightbulb-on
+              </v-icon>
+              <h2 class="text-h5 font-weight-bold blue--text text--darken-2 mb-2">
+                Strategic Planning
+              </h2>
+              <p class="text-body-2 grey--text text--darken-1">
+                Comprehensive promotional marketing strategies aligned with your brand objectives.
+              </p>
+            </v-card>
+          </v-col>
+
+          <!-- Creative Services Card -->
+          <v-col cols="12" sm="4" class="pa-4">
+            <v-card
+              class="service-card elevation-5 pa-6"
+              rounded="xl"
+              @mouseover="hover = 'creative'"
+              @mouseleave="hover = ''"
+            >
+              <v-icon
+                size="50"
+                :color="hover === 'creative' ? 'purple-accent-4' : 'purple darken-2'"
+                class="mb-4"
+                v-if="hover === 'creative'"
+              >
+                mdi-brush
+              </v-icon>
+              <v-icon
+                size="50"
+                color="purple darken-2"
+                class="mb-4"
+                v-else
+              >
+                mdi-brush
+              </v-icon>
+              <h2 class="text-h5 font-weight-bold purple--text text--darken-2 mb-2">
+                Creative Services
+              </h2>
+              <p class="text-body-2 grey--text text--darken-1">
+                Custom program design, creative development, and brand storytelling.
+              </p>
+            </v-card>
+          </v-col>
+
+          <!-- Program Management Card -->
+          <v-col cols="12" sm="4" class="pa-4">
+            <v-card
+              class="service-card elevation-5 pa-6"
+              rounded="xl"
+              @mouseover="hover = 'program'"
+              @mouseleave="hover = ''"
+            >
+              <v-icon
+                size="50"
+                :color="hover === 'program' ? 'teal-accent-4' : 'teal darken-2'"
+                class="mb-4"
+                v-if="hover === 'program'"
+              >
+                mdi-cog
+              </v-icon>
+              <v-icon
+                size="50"
+                color="teal darken-2"
+                class="mb-4"
+                v-else
+              >
+                mdi-cog
+              </v-icon>
+              <h2 class="text-h5 font-weight-bold teal--text text--darken-2 mb-2">
+                Program Management
+              </h2>
+              <p class="text-body-2 grey--text text--darken-1">
+                Full-service execution including staffing, logistics, and operational excellence.
+              </p>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+  </div>
+ 
+
+      <!-- <v-row>
         <v-col
           v-for="service in services"
           :key="service.title"
@@ -70,7 +182,7 @@
             </v-card-item>
           </v-card>
         </v-col>
-      </v-row>
+      </v-row> -->
     </v-container>
 
     <!-- Stats Section -->
@@ -94,7 +206,7 @@
     </v-container>
 
     <!-- CTA Section -->
-    <v-container class="py-12">
+    <!-- <v-container class="py-12">
       <v-row align="center" justify="center">
         <v-col cols="12" md="8" class="text-center">
           <h2 class="text-h3 font-weight-bold mb-4">
@@ -113,7 +225,33 @@
           </v-btn>
         </v-col>
       </v-row>
-    </v-container>
+    </v-container> -->
+
+    <v-container fluid class="cool-cta-section">
+    <v-row justify="center" align="center" class="fill-height pt-10">
+      <v-col cols="12" md="8" class="text-center">
+        <h1 class="text-h2 font-weight-bold gradient-text mb-4">
+          Ready to Grow Your Brand?
+        </h1>
+        <p class="text-subtitle-1 grey--text text--lighten-1 mb-6">
+          Let’s discuss how we can help you reach your goals
+        </p>
+        <v-btn
+          color="blue-accent-4"
+          dark
+          rounded
+          x-large
+          class="elevation-6"
+          @mouseover="hover = true"
+          @mouseleave="hover = false"
+          :elevation="hover ? 12 : 6"
+          @click="handleClick"
+        >
+          Contact Us Today
+        </v-btn>
+      </v-col>
+    </v-row>
+  </v-container>
   </div>
 </template>
 
@@ -128,6 +266,7 @@ export default {
     PlaceholderImage
   },
   data: () => ({
+    hover: '',
     images: IMAGES,
     colors: PLACEHOLDER_COLORS,
     services: [
@@ -181,5 +320,74 @@ html {
 
 #services {
   scroll-margin-top: 60px; /* Adjust this value to match your fixed top menu's height */
+}
+
+
+.cool-section {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  min-height: 80vh;
+  padding: 0;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.service-card:hover {
+  transform: scale(1.05);
+  elevation: 10;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #0288d1, #8e24aa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Icon animation on hover */
+.v-icon {
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .v-icon {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.cool-cta-section {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  min-height: 40vh;
+  padding: 0;
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #4a90e2, #50c878);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.v-btn {
+  transition: all 0.3s ease;
+}
+
+.v-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #4a90e2, #50c878);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.v-btn:active {
+  transform: scale(0.98);
 }
 </style> 
