@@ -78,99 +78,8 @@
     </v-main>
 
     <!-- Footer -->
-    <v-footer class="bg-grey-lighten-3">
-      <v-container>
-        <v-row>
-          <v-col cols="12" md="4">
-            <h3 class="text-h6 mb-4">Samplers Inc</h3>
-            <p class="mb-4">Leading the way in product sampling and brand activation solutions.</p>
-            <div class="d-flex">
-              <v-btn icon="mdi-facebook" variant="text" class="mr-2" href="https://www.facebook.com/SamplersInc/" target="_blank"></v-btn>
-              <v-btn icon="mdi-twitter" variant="text" class="mr-2" href="https://twitter.com/samplersinc" target="_blank"></v-btn>
-              <v-btn icon="mdi-instagram" variant="text" href="https://www.instagram.com/samplersinc/" target="_blank"></v-btn>
-            </div>
-          </v-col>
-          
-          <v-col cols="12" md="8">
-            <v-row>
-              <v-col cols="12" sm="4">
-                <h4 class="text-h6 mb-4">Solutions</h4>
-                <v-list density="compact" nav class="pa-0">
-                  <v-list-item v-for="item in footerSolutions" 
-                               :key="item.title" 
-                               density="compact"
-                               class="pa-0"
-                               min-height="24"
-                  >
-                    <router-link :to="item.to" class="text-body-2">{{ item.title }}</router-link>
-                  </v-list-item>
-                </v-list>
-              </v-col>
-              
-              <v-col cols="12" sm="4">
-                <h4 class="text-h6 mb-4">Company</h4>
-                <v-list density="compact" nav class="pa-0">
-                  <v-list-item v-for="item in footerCompany" 
-                               :key="item.title" 
-                               density="compact"
-                               class="pa-0"
-                               min-height="24"
-                  >
-                    <router-link :to="item.to" class="text-body-2">{{ item.title }}</router-link>
-                  </v-list-item>
-                </v-list>
-              </v-col>
-              
-              <v-col cols="12" sm="4">
-                <h4 class="text-h6 mb-4">Contact</h4>
-                <v-list density="compact" nav>
-                  <v-list-item>
-                    <template v-slot:prepend>
-                      <v-icon color="primary">mdi-map-marker</v-icon>
-                    </template>
-                    <v-list-item-title>
-                      Samplers, Inc.<br>
-                      530 Smithfield Ave<br>
-                      Pawtucket, RI 02860
-                    </v-list-item-title>
-                  </v-list-item>
-                  <v-list-item>
-                    <template v-slot:prepend>
-                      <v-icon color="primary">mdi-phone</v-icon>
-                    </template>
-                    <v-list-item-title>401.722.4800</v-list-item-title>
-                  </v-list-item>
-                  <v-list-item>
-                    <template v-slot:prepend>
-                      <v-icon color="primary">mdi-email</v-icon>
-                    </template>
-                    <v-list-item-title>
-                      For General Info:<br>
-                      info@samplersinc.com
-                    </v-list-item-title>
-                  </v-list-item>
-                  <v-list-item>
-                    <template v-slot:prepend>
-                      <v-icon color="primary">mdi-email</v-icon>
-                    </template>
-                    <v-list-item-title>
-                      To Contact Management:<br>
-                      management@samplersinc.com
-                    </v-list-item-title>
-                  </v-list-item>
-                </v-list>
-              </v-col>
-            </v-row>
-          </v-col>
-        </v-row>
-        
-        <v-divider class="my-4"></v-divider>
-        
-        <div class="text-center">
-          © {{ new Date().getFullYear() }} Samplers Inc. All rights reserved.
-        </div>
-      </v-container>
-    </v-footer>
+    
+    <AppFooter  />
   </v-app>
 </template>
 
@@ -179,13 +88,15 @@ import { NAV_ITEMS, FOOTER_SOLUTIONS, FOOTER_COMPANY, CONTACT_INFO } from '@/con
 import PageTransition from '@/components/PageTransition.vue'
 import Logo from '@/components/Logo.vue'
 import SocialLinks from '@/components/SocialLinks.vue'
+import AppFooter from './components/AppFooter.vue'
 
 export default {
   name: 'App',
   components: {
     PageTransition,
     Logo,
-    SocialLinks
+    SocialLinks,
+    AppFooter
   },
   data: () => ({
     menuItems: NAV_ITEMS,
