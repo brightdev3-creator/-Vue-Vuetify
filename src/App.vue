@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <!-- Navigation -->
-    <v-app-bar app  elevation="1" class="py-3">
+    <v-app-bar app  elevation="1" class="py-3" style="position:relative">
       <v-container class="mx-2 py-0 fill-height v-container-nav">
         <Logo class="mr-5" />
 
@@ -18,7 +18,7 @@
             <span class="d-none d-lg-block">{{ item.title }}</span>
             <span class="d-md-block d-lg-none">{{ item.shortTitle }}</span>
           </v-btn>
-          
+         
         </div>
 
         <!-- Mobile Navigation Button -->

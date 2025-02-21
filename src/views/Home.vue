@@ -94,9 +94,16 @@
      
      <GallarySection />
    </v-container>
+   <v-container fluid>
+  <v-img class="rounded-img" src="/images/video-img.png" cover>
+    <div class="overlay">
+      <img  src="/images/video-start.png"  />
+    </div>
+  </v-img>
+</v-container>
     
     <!-- CTA Section -->
-    <v-container fluid class="bg-grey-lighten-4 cta-section py-16 mb-1">
+    <v-container fluid class=" cta-section py-16 mb-1">
       <v-container>
         <v-row align="center" justify="center">
           <v-col cols="12" md="8" class="text-center">
@@ -125,28 +132,8 @@
       </v-container>
     </v-container>
 
-    <!-- CTA Section -->
-    <!-- <v-container class="py-12">
-      <v-row align="center" justify="center">
-        <v-col cols="12" md="8" class="text-center">
-          <h2 class="text-h3 font-weight-bold mb-4">
-            Ready to Grow Your Brand?
-          </h2>
-          <p class="text-h6 mb-8">
-            Let's discuss how we can help you reach your goals
-          </p>
-          <v-btn
-            x-large
-            color="primary"
-            class="text-none"
-            to="/contact"
-          >
-            Contact Us Today
-          </v-btn>
-        </v-col>
-      </v-row>
-    </v-container> -->
-
+   
+<!-- 
     <v-container fluid class="cool-cta-section">
     <v-row justify="center" align="center" class="fill-height pt-10">
       <v-col cols="12" md="8" class="text-center">
@@ -171,7 +158,7 @@
         </v-btn>
       </v-col>
     </v-row>
-  </v-container>
+  </v-container> -->
   </div>
 </template>
 
@@ -321,7 +308,28 @@ export default {
 
 <style scoped>
 
+.rounded-img {
+  border-radius: 15px;
+ 
+ 
+  height: 600px;
+  object-fit: cover;
+}
 
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
 
 
 
