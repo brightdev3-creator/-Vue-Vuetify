@@ -85,167 +85,15 @@
       </v-container>
     </v-container>
     <!-- Services Section -->
+  
     <v-container fluid id="services" class=" pa-0">
      
-
-    
-      <div class="cool-section">
-    <v-row justify="center" align="center" class="fill-height pt-12">
-      <v-col cols="12" class="text-center mb-10">
-        <h1 class="text-h3 font-weight-bold gradient-text">
-          Comprehensive Marketing Services
-        </h1>
-        <p class="text-subtitle-1 grey--text text--lighten-1">
-          End-to-end promotional marketing solutions for modern brands
-        </p>
-      </v-col>
-      <v-col cols="12" md="10">
-        <v-row justify="center" align="stretch" class="mx-4">
-          <!-- Strategic Planning Card -->
-          <v-col cols="12" sm="4" class="pa-4">
-            <v-card
-              class="service-card elevation-5 pa-6"
-              rounded="xl"
-              @mouseover="hover = 'strategic'"
-              @mouseleave="hover = ''"
-            >
-              <v-icon
-                size="50"
-                :color="hover === 'strategic' ? 'blue-accent-4' : 'blue darken-2'"
-                class="mb-4"
-                v-if="hover === 'strategic'"
-              >
-                mdi-lightbulb-on
-              </v-icon>
-              <v-icon
-                size="50"
-                color="blue darken-2"
-                class="mb-4"
-                v-else
-              >
-                mdi-lightbulb-on
-              </v-icon>
-              <h2 class="text-h5 font-weight-bold blue--text text--darken-2 mb-2">
-                Strategic Planning
-              </h2>
-              <p class="text-body-2 grey--text text--darken-1">
-                Comprehensive promotional marketing strategies aligned with your brand objectives.
-              </p>
-            </v-card>
-          </v-col>
-
-          <!-- Creative Services Card -->
-          <v-col cols="12" sm="4" class="pa-4">
-            <v-card
-              class="service-card elevation-5 pa-6"
-              rounded="xl"
-              @mouseover="hover = 'creative'"
-              @mouseleave="hover = ''"
-            >
-              <v-icon
-                size="50"
-                :color="hover === 'creative' ? 'purple-accent-4' : 'purple darken-2'"
-                class="mb-4"
-                v-if="hover === 'creative'"
-              >
-                mdi-brush
-              </v-icon>
-              <v-icon
-                size="50"
-                color="purple darken-2"
-                class="mb-4"
-                v-else
-              >
-                mdi-brush
-              </v-icon>
-              <h2 class="text-h5 font-weight-bold purple--text text--darken-2 mb-2">
-                Creative Services
-              </h2>
-              <p class="text-body-2 grey--text text--darken-1">
-                Custom program design, creative development, and brand storytelling.
-              </p>
-            </v-card>
-          </v-col>
-
-          <!-- Program Management Card -->
-          <v-col cols="12" sm="4" class="pa-4">
-            <v-card
-              class="service-card elevation-5 pa-6"
-              rounded="xl"
-              @mouseover="hover = 'program'"
-              @mouseleave="hover = ''"
-            >
-              <v-icon
-                size="50"
-                :color="hover === 'program' ? 'teal-accent-4' : 'teal darken-2'"
-                class="mb-4"
-                v-if="hover === 'program'"
-              >
-                mdi-cog
-              </v-icon>
-              <v-icon
-                size="50"
-                color="teal darken-2"
-                class="mb-4"
-                v-else
-              >
-                mdi-cog
-              </v-icon>
-              <h2 class="text-h5 font-weight-bold teal--text text--darken-2 mb-2">
-                Program Management
-              </h2>
-              <p class="text-body-2 grey--text text--darken-1">
-                Full-service execution including staffing, logistics, and operational excellence.
-              </p>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-col>
-    </v-row>
-  </div>
- 
-
-      <!-- <v-row>
-        <v-col
-          v-for="(service, index) in services"
-          :key="service.title"
-          cols="12"
-          md="4"
-          class="d-flex"
-        >
-          <v-card
-            class="mx-auto service-card bg-blue-dark-4"
-            elevation="3"
-            height="100%"
-            max-width="500"
-            v-intersect="animateHeroOnScroll"
-            :data-index="index"
-            :class="{ 'service-card-visible': service.visible }"
-            :style="{ transitionDelay: `${index * 100}ms` }"
-            shaped
-          >
-            <v-card-item>
-              <div class="d-flex flex-column align-center">
-                <div class="service-icon-wrapper mb-6">
-                  <v-card-title
-                    class="text-h5 font-weight-black mb-2 text-center"
-                  >
-                    <v-icon size="54" color="primary">
-                      {{ service.icon }}
-                    </v-icon>
-                    {{ service.title }}
-                  </v-card-title>
-                </div>
-
-                <v-card-text class="text-body-1 text-center font-weight-bold">
-                  {{ service.description }}
-                </v-card-text>
-              </div>
-            </v-card-item>
-          </v-card>
-        </v-col>
-      </v-row> -->
+      <MiddleSection />
     </v-container>
+    <v-container fluid id="services" class=" pa-0">
+     
+     <GallarySection />
+   </v-container>
     
     <!-- CTA Section -->
     <v-container fluid class="bg-grey-lighten-4 cta-section py-16 mb-1">
@@ -331,11 +179,15 @@
 import { IMAGES, PLACEHOLDER_COLORS } from "@/constants/images";
 import PlaceholderImage from "@/components/PlaceholderImage.vue";
 import { withBase } from "@/utils/paths";
+import MiddleSection from "@/components/MiddleSection.vue";
+import GallarySection from "@/components/GallarySection.vue";
 
 export default {
   name: "Home",
   components: {
     PlaceholderImage,
+    MiddleSection,
+    GallarySection
   },
   data: () => ({
     hover: '',
@@ -468,6 +320,10 @@ export default {
 </script>
 
 <style scoped>
+
+
+
+
 
 .hero-wrapper {
   position: relative;

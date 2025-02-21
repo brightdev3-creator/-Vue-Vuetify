@@ -1,8 +1,8 @@
 <template>
   <v-app>
     <!-- Navigation -->
-    <v-app-bar app color="primary" elevation="1" dark>
-      <v-container class="py-0 fill-height v-container-nav">
+    <v-app-bar app  elevation="1" class="py-3">
+      <v-container class="mx-2 py-0 fill-height v-container-nav">
         <Logo class="mr-5" />
 
        
@@ -13,11 +13,12 @@
             :key="item.title"
             :to="item.to"
             text
-            class="text-body-1 font-weight-bold"
+            class="text-body-1 font-weight-regular"
           >
             <span class="d-none d-lg-block">{{ item.title }}</span>
             <span class="d-md-block d-lg-none">{{ item.shortTitle }}</span>
           </v-btn>
+          
         </div>
 
         <!-- Mobile Navigation Button -->
@@ -26,15 +27,16 @@
         </v-btn>
 
         <v-btn
-          color="white"
-          class="ml-4 d-none d-md-inline-flex font-weight-bold rounded-lg"
+          color="primary"
+          class="d-none d-md-inline-flex  rounded-lg"
           to="/contact"
-          variant="outlined"
+          variant="flat"
+          rounded="pill"
         >
           Contact Us
         </v-btn>
         <v-btn
-          color="white"
+          color="primary"
           class="ml-4 d-inline-flex d-md-none"
           to="/contact"
           variant="outlined"
@@ -105,7 +107,7 @@ export default {
 <style scoped>
 @media (min-width: 1280px) {
     .v-container-nav {
-        max-width: 1220px;
+        width: 1454px;
     }
 }
 </style>
