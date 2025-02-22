@@ -44,11 +44,8 @@ export const FOOTER_COMPANY = [
 export const CONTACT_INFO = {
   email: 'info@samplersinc.com',
   phone: '401.722.4800',
-  address: {
-    street: '530 Smithfield Ave',
-    city: 'Pawtucket',
-    state: 'RI',
-    zip: '02860'
-  },
+  address: 
+     '530 Smithfield Ave, Pawtucket, RI, 02860',
+ 
   managementEmail: 'management@samplersinc.com'
 } 

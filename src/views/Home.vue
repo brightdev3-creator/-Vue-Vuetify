@@ -85,71 +85,25 @@
       </v-container>
     </v-container>
     <!-- Services Section -->
-    <v-container fluid id="services" class="py-12 mb-1 services-container">
-      <div class="blur-background"></div>
-      <v-row class="text-center mb-12 relative-position">
-        <v-col cols="12">
-          <div class="section-title-wrapper">
-            <h2
-              class="text-h2 font-weight-bold mb-3 mt-1"
-            >
-              Comprehensive Marketing Services
-            </h2>
-            <div class="title-underline mx-auto mb-6"></div>
-            <p
-              class="text-body-1 max-width-700 mx-auto"
-            >
-              End-to-end promotional marketing solutions crafted for modern
-              brands seeking exceptional results
-            </p>
-          </div>
-        </v-col>
-      </v-row>
-
-      <v-row>
-        <v-col
-          v-for="(service, index) in services"
-          :key="service.title"
-          cols="12"
-          md="4"
-          class="d-flex"
-        >
-          <v-card
-            class="mx-auto service-card bg-blue-dark-4"
-            elevation="3"
-            height="100%"
-            max-width="500"
-            v-intersect="animateHeroOnScroll"
-            :data-index="index"
-            :class="{ 'service-card-visible': service.visible }"
-            :style="{ transitionDelay: `${index * 100}ms` }"
-            shaped
-          >
-            <v-card-item>
-              <div class="d-flex flex-column align-center">
-                <div class="service-icon-wrapper mb-6">
-                  <v-card-title
-                    class="text-h5 font-weight-black mb-2 text-center"
-                  >
-                    <v-icon size="54" color="primary">
-                      {{ service.icon }}
-                    </v-icon>
-                    {{ service.title }}
-                  </v-card-title>
-                </div>
-
-                <v-card-text class="text-body-1 text-center font-weight-bold">
-                  {{ service.description }}
-                </v-card-text>
-              </div>
-            </v-card-item>
-          </v-card>
-        </v-col>
-      </v-row>
+  
+    <v-container fluid id="services" class=" pa-0">
+     
+      <MiddleSection />
     </v-container>
+    <v-container fluid id="services" class=" pa-0">
+     
+     <GallarySection />
+   </v-container>
+   <v-container fluid>
+  <v-img class="rounded-img" src="/images/video-img.png" cover>
+    <div class="overlay">
+      <img  src="/images/video-start.png"  />
+    </div>
+  </v-img>
+</v-container>
     
     <!-- CTA Section -->
-    <v-container fluid class="bg-grey-lighten-4 cta-section py-16 mb-1">
+    <v-container fluid class=" cta-section py-16 mb-1">
       <v-container>
         <v-row align="center" justify="center">
           <v-col cols="12" md="8" class="text-center">
@@ -177,6 +131,34 @@
         </v-row>
       </v-container>
     </v-container>
+
+   
+<!-- 
+    <v-container fluid class="cool-cta-section">
+    <v-row justify="center" align="center" class="fill-height pt-10">
+      <v-col cols="12" md="8" class="text-center">
+        <h1 class="text-h2 font-weight-bold gradient-text mb-4">
+          Ready to Grow Your Brand?
+        </h1>
+        <p class="text-subtitle-1 grey--text text--lighten-1 mb-6">
+          Let’s discuss how we can help you reach your goals
+        </p>
+        <v-btn
+          color="blue-accent-4"
+          dark
+          rounded
+          x-large
+          class="elevation-6"
+          @mouseover="hover = true"
+          @mouseleave="hover = false"
+          :elevation="hover ? 12 : 6"
+          @click="handleClick"
+        >
+          Contact Us Today
+        </v-btn>
+      </v-col>
+    </v-row>
+  </v-container> -->
   </div>
 </template>
 
@@ -184,13 +166,18 @@
 import { IMAGES, PLACEHOLDER_COLORS } from "@/constants/images";
 import PlaceholderImage from "@/components/PlaceholderImage.vue";
 import { withBase } from "@/utils/paths";
+import MiddleSection from "@/components/MiddleSection.vue";
+import GallarySection from "@/components/GallarySection.vue";
 
 export default {
   name: "Home",
   components: {
     PlaceholderImage,
+    MiddleSection,
+    GallarySection
   },
   data: () => ({
+    hover: '',
     images: IMAGES,
     colors: PLACEHOLDER_COLORS,
     services: [
@@ -321,6 +308,31 @@ export default {
 
 <style scoped>
 
+.rounded-img {
+  border-radius: 15px;
+ 
+ 
+  height: 600px;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+
+
 .hero-wrapper {
   position: relative;
 }
@@ -394,106 +406,72 @@ html {
   scroll-margin-top: 60px; /* Adjust this value to match your fixed top menu's height */
 }
 
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
 
-.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
+.cool-section {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  min-height: 80vh;
+  padding: 0;
 }
 
 .service-card {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease-out, transform 0.7s ease-out;
-}
-
-.service-card-visible {
-  opacity: 1;
-  transform: translateY(0);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  transform: scale(1);
 }
 
 .service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: scale(1.05);
+  elevation: 10;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-.cta-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    var(--v-primary-darken1),
-    var(--v-primary-base)
-  );
-  z-index: 1;
-  animation: moveBackground 10s infinite alternate;
+.gradient-text {
+  background: linear-gradient(45deg, #0288d1, #8e24aa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-@keyframes moveBackground {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.1);
-  }
+/* Icon animation on hover */
+.v-icon {
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .v-icon {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.cool-cta-section {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  min-height: 40vh;
+  padding: 0;
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #4a90e2, #50c878);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.v-btn {
+  transition: all 0.3s ease;
 }
 
 .v-btn:hover {
   transform: scale(1.05);
-  transition: transform 0.3s ease;
+  background: linear-gradient(45deg, #4a90e2, #50c878);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-.hero-image-blur {
-  filter: blur(5px);
-  animation: fadeBlur 2s ease-out forwards;
+.v-btn:active {
+  transform: scale(0.98);
 }
-
-@keyframes fadeBlur {
-  to {
-    filter: blur(0);
-  }
-}
-.bg-image {
-  background-image: url('/public/images/services/analytics.jpg'); /* Replace with your image path */
-  background-size: cover; /* Ensures the image covers the entire container */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat; /* Prevents the image from repeating */
-  filter: blur(8px);
-}
-.content {
-  position: relative; /* Position content relative to the container */
-  z-index: 2; /* Higher z-index to place it above the background */
-}
-.services-container {
-  position: relative;
-  overflow: hidden;
-}
-
-.blur-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('/public/images/services/analytics.jpg'); /* Replace with your image path */
-  background-size: cover;
-  background-position: center;
-  filter: blur(8px); /* Adjust blur amount as needed */
-  opacity: 0.6; /* Adjust opacity as needed */
-  z-index: 0;
-}
-
-.relative-position {
-  position: relative;
-  z-index: 1;
-}
-</style>
+</style> 

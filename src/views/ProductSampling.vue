@@ -83,21 +83,7 @@
           <h2 class="text-h4 font-weight-bold mb-6">Featured Sampling Programs</h2>
         </v-col>
         <v-col v-for="(image, index) in samplingImages" :key="index" cols="12" sm="6" md="4" lg="3">
-          <v-card class="mx-auto">
-            <v-img
-              :src="image.src"
-              :alt="image.alt"
-              height="250"
-              cover
-              class="bg-grey-lighten-2"
-            >
-              <template v-slot:placeholder>
-                <v-row class="fill-height ma-0" align="center" justify="center">
-                  <v-progress-circular indeterminate color="primary"></v-progress-circular>
-                </v-row>
-              </template>
-            </v-img>
-          </v-card>
+          <FeatureCard :image="image" />
         </v-col>
       </v-row>
     </v-container>
@@ -106,9 +92,15 @@
 
 <script>
 import { withBase } from '@/utils/paths';
+import FeatureCard from '@/components/FeatureCard.vue';
+import { components } from 'vuetify/dist/vuetify-labs.js';
 
 export default {
+
   name: 'ProductSampling',
+  components  : {
+    FeatureCard
+  },
   data: () => ({
     samplingImages: [
       { src: withBase('/images/sampling/sampling1.jpg'), alt: 'Product Sampling Example 1' },

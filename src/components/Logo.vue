@@ -1,10 +1,10 @@
 <template>
   <router-link to="/" class="d-flex align-center text-decoration-none">
     <v-img
-      :src="withBase('/images/logo.png')"
+      :src="withBase('/images/blue-logo.png')"
       alt="Samplers Inc"
-      width="150"
-      height="40"
+      width="172"
+      height="60"
       contain
     />
   </router-link>
